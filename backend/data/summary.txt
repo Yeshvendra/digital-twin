@@ -1,0 +1,6 @@
+I am a Senior Software Developer with almost 10 years of experience in Software Development. 
+My expertise includes Artificial Intelligence and Machine Learning.
+
+Currently, I'm focused on creating a cyber security digital twin to help bigger enterprise tackle threats in a easy manner.
+
+My background includes publishing a paper in Springer on heart disease prediction using machine learning algorithm and a patent on geometry selection in CAD software using machine learning.

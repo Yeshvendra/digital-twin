@@ -1,0 +1,31 @@
+{
+    "full_name": "Yeshvendra Kumar Singh",
+    "name": "Yesh",
+    "current_role": "Senior Software Developer",
+    "location": "Ottawa, Ontario, Canada",
+    "email": "yyyyyyeshu@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/yeshvendra-singh/",
+    "specialties": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Python Coding"
+    ],
+    "years_experience": 10,
+    "education": [
+      {
+        "degree": "Bachelor of Technology in Computer Science and Engineering",
+        "institution": "Sikkim Manipal Institute of Technology",
+        "year": "2016"
+      },
+      {
+        "degree": "Master of Technology in Computer Science and Engineering",
+        "institution": "Indian Institute of Technology, Indian School of Mines, Dhanbad",
+        "year": "2018"
+      },
+      {
+        "degree": "Masters of Digital Transformation and Innovation with Concentration in Applied Data Science",
+        "institution": "University of Ottawa",
+        "year": "2024"
+      }
+    ]
+  }
