@@ -29,12 +29,51 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Display safe OIDC claims
+        shell: bash
+        run: |
+          RESPONSE=$(curl --silent --show-error --fail \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com")
+
+          TOKEN=$(echo "$RESPONSE" | jq -r '.value')
+
+          python - "$TOKEN" <<'PY'
+          import base64
+          import json
+          import sys
+
+          token = sys.argv[1]
+          payload = token.split(".")[1]
+          payload += "=" * (-len(payload) % 4)
+
+          claims = json.loads(
+              base64.urlsafe_b64decode(payload).decode("utf-8")
+          )
+
+          safe_claims = {
+              key: claims.get(key)
+              for key in [
+                  "aud",
+                  "sub",
+                  "repository",
+                  "repository_owner",
+                  "ref",
+                  "environment",
+                  "event_name",
+                  "workflow",
+              ]
+          }
+
+          print(json.dumps(safe_claims, indent=2))
+          PY
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: arn:aws:iam::861169245440:role/github-actions-twin-deploy
           role-session-name: github-actions-deploy
-          aws-region: ${{ secrets.DEFAULT_AWS_REGION }}
+          aws-region: us-east-2
           audience: sts.amazonaws.com
 
       - name: Set up Python
