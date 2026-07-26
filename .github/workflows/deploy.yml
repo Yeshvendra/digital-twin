@@ -66,9 +66,6 @@ jobs:
           }
 
           print(json.dumps(safe_claims, indent=2))
-          print("Region: ${{ secrets.DEFAULT_AWS_REGION }}")
-          print("Role: {{ secrets.AWS_ROLE_ARN }}")
-          print("Account: {{ secrets.AWS_ACCOUNT_ID }}")
           PY
 
       - name: Configure AWS credentials
